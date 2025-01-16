@@ -1,0 +1,26 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Resultados del Juego</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="result-screen" style="display: flex;">
+    <header>
+      <h2>Resultados Finales</h2>
+    </header>
+    <div class="results-summary">
+      <p id="final-correct-count" style="color: green;">Correctas: 0</p>
+      <p id="final-wrong-count" style="color: red;">Incorrectas: 0</p>
+      <p id="final-percentage-count">Precisión: 0%</p>
+      <p id="final-message"></p>
+      <button id="restart-button" onclick="location.href='index.html'">Reiniciar</button>
+    </div>
+  </main>
+  <footer style="position: relative; margin-top: 20px;">
+    <p>Desarrollado para mentes curiosas de 7 a 8 años</p>
+  </footer>
+  <script src="scripts.js" type="module"></script>
+</body>
+</html>
