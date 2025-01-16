@@ -93,15 +93,6 @@ main {
   font-size: 1em;
 }
 
-footer {
-  background-color: #ffdfba;
-  padding: 6px;
-  border-radius: auto;
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
-
 .hidden {
   display: none;
 }
