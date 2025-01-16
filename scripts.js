@@ -19,14 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const correctCounter = document.getElementById('correct-count');
   const wrongCounter = document.getElementById('wrong-count');
   const percentageCounter = document.getElementById('percentage-count');
-  const resultScreen = document.getElementById('result-screen');
-  const finalCorrectCount = document.getElementById('final-correct-count');
-  const finalWrongCount = document.getElementById('final-wrong-count');
-  const finalPercentageCount = document.getElementById('final-percentage-count');
-  const finalMessage = document.getElementById('final-message');
-  const restartButton = document.getElementById('restart-button');
 
-  if (!questionContainer || !optionsContainer || !correctCounter || !wrongCounter || !percentageCounter || !resultScreen || !finalCorrectCount || !finalWrongCount || !finalPercentageCount || !finalMessage || !restartButton) {
+  if (!questionContainer || !optionsContainer || !correctCounter || !wrongCounter || !percentageCounter) {
     console.error("Elements are missing in the HTML document.");
     return;
   }
@@ -102,36 +96,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showResults() {
-    const percentage = ((correctCount / totalQuestions) * 100).toFixed(2);
-    finalCorrectCount.innerText = `Correctas: ${correctCount}`;
-    finalWrongCount.innerText = `Incorrectas: ${wrongCount}`;
-    finalPercentageCount.innerText = `Precisión: ${percentage}%`;
-
-    if (percentage >= 90) {
-      finalMessage.innerText = '¡Eres un genio, la NASA quiere que trabajes para ellos!';
-    } else {
-      finalMessage.innerText = '¡Sigue practicando, estás haciendo un gran trabajo!';
-    }
-
-    document.querySelector('main').classList.add('hidden');
-    resultScreen.classList.remove('hidden');
+    const percentage = ((correctCount / 20) * 100).toFixed(2);
+    localStorage.setItem('finalCorrectCount', correctCount);
+    localStorage.setItem('finalWrongCount', wrongCount);
+    localStorage.setItem('finalPercentageCount', percentage);
+    location.href = 'results.html';
   }
-
-  function restartGame() {
-    correctCount = 0;
-    wrongCount = 0;
-    totalQuestions = 0;
-    answeredQuestions = 0;
-    lastQuestionIndex = null;
-
-    updateScore();
-    resultScreen.classList.add('hidden');
-    document.querySelector('main').classList.remove('hidden');
-
-    createQuestion();
-  }
-
-  restartButton.addEventListener('click', restartGame);
 
   createQuestion();
 });
+
+const resultScreen = document.getElementById('result-screen');
+if (resultScreen) {
+  const finalCorrectCount = document.getElementById('final-correct-count');
+  const finalWrongCount = document.getElementById('final-wrong-count');
+  const finalPercentageCount = document.getElementById('final-percentage-count');
+  const finalMessage = document.getElementById('final-message');
+
+  const correctCount = localStorage.getItem('finalCorrectCount');
+  const wrongCount = localStorage.getItem('finalWrongCount');
+  const percentage = localStorage.getItem('finalPercentageCount');
+
+  finalCorrectCount.innerText = `Correctas: ${correctCount}`;
+  finalWrongCount.innerText = `Incorrectas: ${wrongCount}`;
+  finalPercentageCount.innerText = `Precisión: ${percentage}%`;
+
+  if (percentage >= 90) {
+    finalMessage.innerText = '¡Eres un genio, la NASA te busca para que trabajes con ellos!';
+  } else {
+    finalMessage.innerText = '¡Sigue practicando, estás haciendo un gran trabajo!';
+  }
+
+  localStorage.clear();
+}
