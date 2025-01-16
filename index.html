@@ -1,7 +1,7 @@
-<html lang="es">
+html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Juega y Aprende: Tablas de Multiplicar del 2</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -9,7 +9,7 @@
   <header>
     <h1>¡Bienvenido al Mundo de las Tablas del 2!</h1>
   </header>
-  <main>
+  <main id="game-screen">
     <section id="game-container">
       <h2>¿Cuánto es?</h2>
       <div id="question-container"></div>
@@ -21,16 +21,6 @@
       <div id="percentage-count" class="score">Precisión: 0%</div>
     </div>
   </main>
-  <div id="result-screen" class="hidden">
-    <div class="results-summary">
-      <h2>Resultados Finales</h2>
-      <p id="final-correct-count">Correctas: 0</p>
-      <p id="final-wrong-count">Incorrectas: 0</p>
-      <p id="final-percentage-count">Precisión: 0%</p>
-      <p id="final-message"></p>
-    </div>
-    <button id="restart-button">Reiniciar</button>
-  </div>
   <footer>
     <p>Desarrollado para mentes curiosas de 7 a 8 años</p>
   </footer>
